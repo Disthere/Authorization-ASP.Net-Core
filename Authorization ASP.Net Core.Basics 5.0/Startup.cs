@@ -14,6 +14,14 @@ namespace Authorization_ASP.Net_Core.Basics_5._0
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication("Cookie")
+                .AddCookie("Cookie", config =>
+            {
+                config.LoginPath = "/Admin/Login";
+            });
+
+            services.AddAuthorization();
+
             services.AddControllersWithViews();
         }
 
@@ -25,7 +33,15 @@ namespace Authorization_ASP.Net_Core.Basics_5._0
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
+
             app.UseRouting();
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
