@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Authorization_ASP.Net_Core.Database_5._0
+namespace Authorization_ASP.Net_Core_Roles_5._0
 {
     public class Program
     {

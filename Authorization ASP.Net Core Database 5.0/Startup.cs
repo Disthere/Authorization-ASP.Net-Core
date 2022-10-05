@@ -6,9 +6,10 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Authorization_ASP.Net_Core.Database_5._0
+namespace Authorization_ASP.Net_Core_Database_5._0
 {
     public class Startup
     {
@@ -16,11 +17,32 @@ namespace Authorization_ASP.Net_Core.Database_5._0
         {
             services.AddAuthentication("Cookie")
                 .AddCookie("Cookie", config =>
-            {
-                config.LoginPath = "/Admin/Login";
-            });
+                {
+                    config.LoginPath = "/Admin/Login";
+                    config.AccessDeniedPath = "/Home/AccessDenied";
+                });
 
-            services.AddAuthorization();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Administrator", builder =>
+                {
+                    //builder.RequireAssertion(x => x.User.HasClaim(ClaimTypes.Role, "Administrator"));
+                    builder.RequireClaim(ClaimTypes.Role, "Administrator");
+                });
+
+                options.AddPolicy("Manager", builder =>
+                {
+                    builder.RequireAssertion(x => x.User.HasClaim(ClaimTypes.Role, "Manager"));
+                    //builder.RequireClaim(ClaimTypes.Role, "Manager");
+                });
+
+                options.AddPolicy("Manager", builder =>
+                {
+                    builder.RequireAssertion(x => x.User.HasClaim(ClaimTypes.Role, "Manager")
+                    || x.User.HasClaim(ClaimTypes.Role, "Administrator"));
+                });
+
+            });
 
             services.AddControllersWithViews();
         }
