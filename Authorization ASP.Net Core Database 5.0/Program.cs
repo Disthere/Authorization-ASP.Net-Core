@@ -1,5 +1,8 @@
+using Authorization_ASP.Net_Core_Database_5._0.Data;
+using Authorization_ASP.Net_Core_Database_5._0.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,7 +16,12 @@ namespace Authorization_ASP.Net_Core_Database_5._0
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            using (var scope = host.Services.CreateScope())
+            {
+                Databaseinitializer.Init(scope.ServiceProvider);
+            }
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -22,5 +30,24 @@ namespace Authorization_ASP.Net_Core_Database_5._0
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+    }
+
+    public static class Databaseinitializer
+    {
+        public static void Init(IServiceProvider scopeServiceProvider)
+        {
+            var context = scopeServiceProvider.GetService<ApplicationDbContext>();
+
+            var user = new ApplicationUser
+            {
+                UserName = "User",
+                Password = "123",
+                LastName = "LastName",
+                FirstName = "FirstName"
+            };
+
+            context.Users.Add(user);
+            context.SaveChanges();
+        }
     }
 }

@@ -1,6 +1,8 @@
+using Authorization_ASP.Net_Core_Database_5._0.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -15,6 +17,11 @@ namespace Authorization_ASP.Net_Core_Database_5._0
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(config =>
+            {
+                config.UseInMemoryDatabase("MEMORY");
+            });
+            
             services.AddAuthentication("Cookie")
                 .AddCookie("Cookie", config =>
                 {

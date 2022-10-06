@@ -1,7 +1,9 @@
 ﻿using Authorization_ASP.Net_Core.Database_5._0.Views;
+using Authorization_ASP.Net_Core_Database_5._0.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
@@ -12,6 +14,11 @@ namespace Authorization_ASP.Net_Core.Database_5._0.Controllers
     [Authorize]
     public class AdminController : Controller
     {
+        private readonly ApplicationDbContext _context;
+
+        public AdminController(ApplicationDbContext context) =>
+        _context = context;
+
         public IActionResult Index()
         {
             return View();
@@ -42,6 +49,16 @@ namespace Authorization_ASP.Net_Core.Database_5._0.Controllers
             if (!ModelState.IsValid)
             {
                 return View(model);
+            }
+
+            var user = await _context.Users
+                .SingleOrDefaultAsync(x => x.UserName == model.UserName
+                 && x.Password == model.Password);
+
+            if (user == null)
+            {
+                ModelState.AddModelError("", "User not found");
+                return View(model); 
             }
 
             var claims = new List<Claim>()
