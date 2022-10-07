@@ -1,4 +1,5 @@
 using Authorization_ASP.Net_Core_Database_5._0.Data;
+using Authorization_ASP.Net_Core_Database_5._0.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -20,14 +21,29 @@ namespace Authorization_ASP.Net_Core_Database_5._0
             services.AddDbContext<ApplicationDbContext>(config =>
             {
                 config.UseInMemoryDatabase("MEMORY");
-            });
-            
-            services.AddAuthentication("Cookie")
-                .AddCookie("Cookie", config =>
+            })
+                .AddIdentity<ApplicationUser, ApplicationRole>(config =>
                 {
-                    config.LoginPath = "/Admin/Login";
-                    config.AccessDeniedPath = "/Home/AccessDenied";
-                });
+                    config.Password.RequireDigit = false;
+                    config.Password.RequireLowercase = false;
+                    config.Password.RequireNonAlphanumeric = false;
+                    config.Password.RequireUppercase = false;
+                    config.Password.RequiredLength = 3;
+                })
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //services.AddAuthentication("Cookie")
+            //    .AddCookie("Cookie", config =>
+            //    {
+            //        config.LoginPath = "/Admin/Login";
+            //        config.AccessDeniedPath = "/Home/AccessDenied";
+            //    });
+
+            services.ConfigureApplicationCookie(config =>
+            {
+                config.LoginPath = "/Admin/Login";
+                config.AccessDeniedPath = "/Home/AccessDenied";
+            });
 
             services.AddAuthorization(options =>
             {
