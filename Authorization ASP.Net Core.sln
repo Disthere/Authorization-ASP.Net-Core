@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization ASP.Net Core.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization ASP.Net Core Roles 5.0", "Authorization ASP.Net Core Roles 5.0\Authorization ASP.Net Core Roles 5.0.csproj", "{11BD03C7-010D-440C-84AF-AF893A3CA1B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization ASP.Net Core Database 5.0", "Authorization ASP.Net Core Database 5.0\Authorization ASP.Net Core Database 5.0.csproj", "{549BE229-FD03-46D0-8CA8-152F84FEDCD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization ASP.Net Core Database 5.0", "Authorization ASP.Net Core Database 5.0\Authorization ASP.Net Core Database 5.0.csproj", "{549BE229-FD03-46D0-8CA8-152F84FEDCD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

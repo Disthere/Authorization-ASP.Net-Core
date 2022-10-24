@@ -1,7 +1,9 @@
 ﻿using Authorization_ASP.Net_Core.JwtBearer_5._0.Views;
-using Microsoft.AspNetCore.Authentication;
+
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
@@ -12,7 +14,21 @@ namespace Authorization_ASP.Net_Core.JwtBearer_5._0.Controllers
     [Authorize]
     public class AdminController : Controller
     {
+             
+
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        [Authorize(Policy = "Administrator")]
+        public IActionResult Administrator()
+        {
+            return View();
+        }
+
+        [Authorize(Policy = "Manager")]
+        public IActionResult Manager()
         {
             return View();
         }
@@ -32,20 +48,23 @@ namespace Authorization_ASP.Net_Core.JwtBearer_5._0.Controllers
                 return View(model);
             }
 
-            var claims = new List<Claim>()
-            {
-                new Claim("Demo","Value")
-            };
-            var claimIdentity = new ClaimsIdentity(claims, "Cookie");
-            var claimPrincipal = new ClaimsPrincipal(claimIdentity);
-            await HttpContext.SignInAsync("Cookie", claimPrincipal);
+            //var user = await _context.Users
+            //    .SingleOrDefaultAsync(x => x.UserName == model.UserName);
+            //     //&& x.Password == model.Password);
 
-            return Redirect(model.ReturnUrl);
+           
+
+            return View(model);
+            
+
+
         }
 
-        public IActionResult LogOff()
+        public async Task<IActionResult> LogOffAsync()
         {
-            HttpContext.SignOutAsync("Cookie");
+            //HttpContext.SignOutAsync("Cookie");
+
+            //await _signInManager.SignOutAsync();
             return Redirect("/Home/Index");
         }
     }

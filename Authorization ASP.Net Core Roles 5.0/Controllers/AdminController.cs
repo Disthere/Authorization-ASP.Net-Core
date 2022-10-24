@@ -1,4 +1,4 @@
-﻿using Authorization_ASP.Net_Core.Database_5._0.Views;
+﻿using Authorization_ASP.Net_Core.JwtBearer_5._0.Views;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Authorization_ASP.Net_Core.Database_5._0.Controllers
+namespace Authorization_ASP.Net_Core.JwtBearer_5._0.Controllers
 {
     [Authorize]
     public class AdminController : Controller
