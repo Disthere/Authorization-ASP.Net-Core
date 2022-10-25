@@ -1,0 +1,13 @@
+﻿{
+  "profiles": {
+    "Identity.Orders.WebApi": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "launchUrl": "site/index",
+      "applicationUrl": "https://localhost:7001;http://localhost:7000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+﻿<a asp-controller="Site" asp-action="Index">[Index]</a>
+<a asp-controller="Site" asp-action="GetOrders">GetOrders</a>
+
+
+
+
+<a asp-controller="Admin" asp-action="Index">[Secured Zone]</a>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="nav" align="center" style="width: 70%; margin: 0 auto; text-align: center;">
+        
+        <h3 align="center" style="margin: 20px;">
+            <a asp-controller="Admin" asp-action="Administrator"> Administrator Page </a>
+        </h3>
+
+        <h3 align="center" style="margin: 20px;">
+            <a asp-controller="Admin" asp-action="Manager"> Manager Page </a>
+        </h3>
+
+        <h5 align="right">
+            <a asp-controller="Admin" asp-action="LogOff">LogOff</a>
+        </h5>
+    </div>
+}

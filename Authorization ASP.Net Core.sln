@@ -9,6 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization ASP.Net Core 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization ASP.Net Core Database 5.0", "Authorization ASP.Net Core Database 5.0\Authorization ASP.Net Core Database 5.0.csproj", "{549BE229-FD03-46D0-8CA8-152F84FEDCD2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Orders.WebApi", "Identity.Orders.WebApi\Identity.Orders.WebApi.csproj", "{164118B9-B2A3-45F6-9FCC-7FD89FEB0410}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Users.WebApi", "Identity.Users.WebApi\Identity.Users.WebApi.csproj", "{BF592470-34A4-4B85-B43C-6FE2E1A35CF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.IdentityServer", "Identity.IdentityServer\Identity.IdentityServer.csproj", "{4446F614-4475-4EC9-9D3F-92A10B77FC15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +33,18 @@ Global
 		{549BE229-FD03-46D0-8CA8-152F84FEDCD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{549BE229-FD03-46D0-8CA8-152F84FEDCD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{549BE229-FD03-46D0-8CA8-152F84FEDCD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{164118B9-B2A3-45F6-9FCC-7FD89FEB0410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{164118B9-B2A3-45F6-9FCC-7FD89FEB0410}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{164118B9-B2A3-45F6-9FCC-7FD89FEB0410}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{164118B9-B2A3-45F6-9FCC-7FD89FEB0410}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF592470-34A4-4B85-B43C-6FE2E1A35CF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF592470-34A4-4B85-B43C-6FE2E1A35CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF592470-34A4-4B85-B43C-6FE2E1A35CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF592470-34A4-4B85-B43C-6FE2E1A35CF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4446F614-4475-4EC9-9D3F-92A10B77FC15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4446F614-4475-4EC9-9D3F-92A10B77FC15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4446F614-4475-4EC9-9D3F-92A10B77FC15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4446F614-4475-4EC9-9D3F-92A10B77FC15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
